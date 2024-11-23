@@ -6,16 +6,28 @@ const app = express();
 // app.use(bodyParser.json());
 app.use(express.json());
 
+
+//functions
 const sayHi = (req, res) => {
     res.send("Hi!");
 };
 
+const sumNumbers = (req, res) => {
+    const { a, b } = req.body;
+    res.send(`The new sum is: ${a + b}`);
+}
+
+
+
 app.get("/", sayHi);
 
-app.post("/add", (req, res) => {
-    const { a, b } = req.body;
-    res.send(`The sum is: ${a + b}`);
-});
+//methods
+// app.post("/add", (req, res) => {
+//     const { a, b } = req.body;
+//     res.send(`The sum is: ${a + b}`);
+// });
+
+app.post("/add", sumNumbers);
 
 app.listen(5000, () => {
     console.log(`Server is running on port 5000.`);
