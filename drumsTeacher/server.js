@@ -33,6 +33,7 @@ const paramsUrl = require("./routes/json_params_url");
 const analyticsList = require("./routes/analyticsList");
 const configUrl = require("./routes/configUrl");
 const activityAnalytics = require("./routes/activityAnalytics");
+const deployAtividade = require("./routes/deploy");
 
 
 
@@ -55,12 +56,13 @@ app.use("/configuracao-atividade", configUrl) //para configurar uma atividade
 app.use("/json-params-atividade", paramsUrl); //para ver os parametros que cada atividade deve ter
 app.use("/lista-analytics-atividade", analyticsList); //para ver a lista de analytics disponiveis
 app.use("/analytics-atividade", activityAnalytics) // para ou alterar ver os items analisados na atividade
+app.use("/deployAtividade", deployAtividade); // para dar deploy nyma atividade
 
 
 //anotacoes
 // "name": "Atividade interessante",                                    DONE! (lista e adiciona atividade)
-// "config_url": "http://<domínio>/configuracao-atividade.html",
+// "config_url": "http://<domínio>/configuracao-atividade.html",        DONE!
 // "json_params_url": "http:// <domínio>/json-params-atividade",        DONE!
-// "user_url": "http://<domínio>/deploy-atividade",
-// "analytics_url": "http://<domínio>/analytics-atividade",
+// "user_url": "http://<domínio>/deploy-atividade",                     ongoing
+// "analytics_url": "http://<domínio>/analytics-atividade",             DONE!
 // "analytics_list_url": "http://<domínio>/lista-analytics-atividade"   DONE!
