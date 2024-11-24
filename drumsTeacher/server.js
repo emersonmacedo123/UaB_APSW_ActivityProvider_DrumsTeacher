@@ -32,6 +32,7 @@ const addActivityRoute = require("./routes/activities");
 const paramsUrl = require("./routes/json_params_url");
 const analyticsList = require("./routes/analyticsList");
 const configUrl = require("./routes/configUrl");
+const activityAnalytics = require("./routes/activityAnalytics");
 
 
 
@@ -53,6 +54,7 @@ app.use("/activities", addActivityRoute); //para ver as atividades registradas  
 app.use("/configuracao-atividade", configUrl) //para configurar uma atividade
 app.use("/json-params-atividade", paramsUrl); //para ver os parametros que cada atividade deve ter
 app.use("/lista-analytics-atividade", analyticsList); //para ver a lista de analytics disponiveis
+app.use("/analytics-atividade", activityAnalytics) // para ou alterar ver os items analisados na atividade
 
 
 //anotacoes
