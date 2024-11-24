@@ -29,8 +29,9 @@ app.listen(PORT, () => {
 //Adicionando rotas
 const home = require("./routes/home")
 const addActivityRoute = require("./routes/activities");
-const intialParameters = require("./routes/config_url");
+const paramsUrl = require("./routes/json_params_url");
 const analyticsList = require("./routes/analyticsList");
+const configUrl = require("./routes/configUrl");
 
 
 
@@ -47,15 +48,17 @@ const sumNumbers = (req, res) => {
 
 //Rotas registradas
 // app.use("/config", configRoutes); // Rotas de configuração
-app.use("/", home); //Initial setup
-app.use("/activities", addActivityRoute);
-app.use("/config", intialParameters);
-app.use("/analytics_list_url", analyticsList);
+app.use("/", home); //Initial setup for testing
+app.use("/activities", addActivityRoute); //para ver as atividades registradas  e adicionar
+app.use("/configuracao-atividade", configUrl) //para configurar uma atividade
+app.use("/json-params-atividade", paramsUrl); //para ver os parametros que cada atividade deve ter
+app.use("/lista-analytics-atividade", analyticsList); //para ver a lista de analytics disponiveis
 
 
-// // Rota para receber e guardar dados JSON
-// app.post('/api/dados', (req, res) => {
-//     const novoDado = req.body;
-//     dados.push(novoDado);
-//     res.status(201).json(novoDado);
-// });
+//anotacoes
+// "name": "Atividade interessante",                                    DONE! (lista e adiciona atividade)
+// "config_url": "http://<domínio>/configuracao-atividade.html",
+// "json_params_url": "http:// <domínio>/json-params-atividade",        DONE!
+// "user_url": "http://<domínio>/deploy-atividade",
+// "analytics_url": "http://<domínio>/analytics-atividade",
+// "analytics_list_url": "http://<domínio>/lista-analytics-atividade"   DONE!
