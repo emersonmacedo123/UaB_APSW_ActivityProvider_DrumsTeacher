@@ -27,8 +27,10 @@ app.listen(PORT, () => {
 });
 
 //Adicionando rotas
-const addActivityRoute = require("./routes/activities");
 const home = require("./routes/home")
+const addActivityRoute = require("./routes/activities");
+const intialParameters = require("./routes/config_url");
+const analyticsList = require("./routes/analyticsList");
 
 
 
@@ -46,7 +48,9 @@ const sumNumbers = (req, res) => {
 //Rotas registradas
 // app.use("/config", configRoutes); // Rotas de configuração
 app.use("/", home); //Initial setup
-app.post("/add", sumNumbers);
+app.use("/activities", addActivityRoute);
+app.use("/config", intialParameters);
+app.use("/analytics_list_url", analyticsList);
 
 
 // // Rota para receber e guardar dados JSON
