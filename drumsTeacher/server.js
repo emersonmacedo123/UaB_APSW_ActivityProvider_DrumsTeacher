@@ -12,10 +12,14 @@ const listEndpoints = require("express-list-endpoints");
 require("dotenv").config(); // Carregar variáveis de ambiente do arquivo .env
 const router = express.Router();
 
-
+// Cria uma instância do Express
 const app = express();
+
+//set up de porta e base_url
 const PORT = process.env.PORT || 5000;
 const BASE_URL = process.env.BASE_URL || "http://localhost:5000";
+
+//Middlewares
 app.use(express.json());
 
 
@@ -35,29 +39,23 @@ const configUrl = require("./routes/configUrl");
 const activityAnalytics = require("./routes/activityAnalytics");
 const deployAtividade = require("./routes/deploy");
 
-
-
-//Middlewares iniciais de testes
-//Saudacoes - initial GET
-const sayHi = (req, res) => {
-    res.send("Hi");
-};
-//somar numers enviados - initial POST
-const sumNumbers = (req, res) => {
-    const { a, b } = req.body;
-    res.send(`The new sum is: ${a + b}`);
-}
-
 //Rotas registradas
-// app.use("/config", configRoutes); // Rotas de configuração
-app.use("/", home); //Initial setup for testing
-app.use("/activities", addActivityRoute); //para ver as atividades registradas  e adicionar
-app.use("/configuracao-atividade", configUrl) //para configurar uma atividade
-app.use("/json-params-atividade", paramsUrl); //para ver os parametros que cada atividade deve ter
-app.use("/lista-analytics-atividade", analyticsList); //para ver a lista de analytics disponiveis
-app.use("/analytics-atividade", activityAnalytics) // para ou alterar ver os items analisados na atividade
-app.use("/deployAtividade", deployAtividade); // para dar deploy nyma atividade
-
+/// @brief Rota inicial para teste
+app.use("/", home);
+/// @brief Rota ver atividades registradas e adicionar atividades
+app.use("/activities", addActivityRoute);
+/// @brief Rota para configurar uma atividade
+app.use("/configuracao-atividade", configUrl);
+/// @brief Rota para ver os parametros que cada atividade deve ter
+app.use("/json-params-atividade", paramsUrl);
+/// @brief Rota para ver a lista de analytics disponiveis
+app.use("/lista-analytics-atividade", analyticsList);
+/// @brief Rota para ver ou alterar os items analisados na atividade
+app.use("/analytics-atividade", activityAnalytics);
+/// @brief Rota para dar deploy em uma atividade
+app.use("/deployAtividade", deployAtividade);
+/// @brief Rota de configuracao
+// app.use("/config", configRoutes);
 
 //anotacoes
 // "name": "Atividade interessante",                                    DONE! (lista e adiciona atividade)
